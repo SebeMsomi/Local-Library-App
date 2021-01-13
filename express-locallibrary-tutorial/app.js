@@ -12,16 +12,26 @@ var compression = require('compression');
 var helmet = require('helmet');
 
 var app = express();
-
+const mysql = require('mysql');
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'user',
+  password: 'password',
+  database: 'populatedb'
+});
+connection.connect((err) => {
+  if (err) throw err;
+  console.log('Connected!');
+});
 
 // Set up mongoose connection
-var mongoose = require('mongoose');
+/*var mongoose = require('mongoose');
 var dev_db_url = 'mongodb+srv://cooluser:coolpassword@cluster0.a9azn.mongodb.net/local_library?retryWrites=true';
 var mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));*/
 
 
 // view engine setup
@@ -56,5 +66,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;
