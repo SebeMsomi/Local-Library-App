@@ -1,13 +1,13 @@
-var mongoose = require('mongoose');
+var mysql = require('mysql');
 
-var Schema = mongoose.Schema;
+var Schema = mysql.Schema;
 
 var BookSchema = new Schema({
     title: {type: String, required: true},
-    author: { type: Schema.ObjectId, ref: 'Author', required: true },
+    author: { /*type: Schema.ObjectId,*/ ref: 'Author', required: true },
     summary: {type: String, required: true},
     isbn: {type: String, required: true},
-    genre: [{ type: Schema.ObjectId, ref: 'Genre' }]
+    genre: [{ /*type: Schema.ObjectId, */ref: 'Genre' }]
 });
 
 // Virtual for this book instance URL.
@@ -18,4 +18,4 @@ BookSchema
 });
 
 // Export model.
-module.exports = mongoose.model('Book', BookSchema);
+module.exports = mysql.model('Book', BookSchema);
