@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
+var mysql = require('mysql');
 
-var Schema = mongoose.Schema;
+var Schema = mysql.Schema;
 
 var GenreSchema = new Schema({
     name: {type: String, required: true, minlength: 3, maxlength: 100}
@@ -14,4 +14,4 @@ GenreSchema
 });
 
 // Export model.
-module.exports = mongoose.model('Genre', GenreSchema);
+module.exports = mysql.model('Genre', GenreSchema);
