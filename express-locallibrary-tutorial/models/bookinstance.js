@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
+var mysql = require('mysql');
 const { DateTime } = require("luxon");  //for date handling
 
-var Schema = mongoose.Schema;
+var Schema = mysql.Schema;
 
 var BookInstanceSchema = new Schema({
     book: { type: Schema.ObjectId, ref: 'Book', required: true }, // Reference to the associated book.
@@ -32,4 +32,4 @@ BookInstanceSchema
 
 
 // Export model.
-module.exports = mongoose.model('BookInstance', BookInstanceSchema);
+module.exports = mysql.model('BookInstance', BookInstanceSchema);
